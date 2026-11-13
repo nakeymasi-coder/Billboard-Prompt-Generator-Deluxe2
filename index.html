@@ -1224,9 +1224,9 @@
         "Gloss Empire Muse",
         "Velvet Fire Glam",
         "Pink Flash Campaign",
-        "Royal Pop Luxe",
+        "Pop Luxe Icon",
         "Electric Fame Queen",
-        "Urban Crown Muse",
+        "Urban Halo Muse",
         "Spotlight Fantasy Diva",
         "Platinum Night Poster",
         "Satin Shine Billboard",
@@ -1778,7 +1778,7 @@ a giant symmetrical afro halo with clean unified shape
 an exaggerated halo afro with dramatic sculpted volume
 massive twin afro puffs with clean symmetrical shape
 a bold luxury afro bloom with rounded unified structure
-oversized afro volume framing the face like a glowing crown
+oversized afro volume framing the face like a glowing halo
 a statement afro silhouette with polished roots and giant fullness
 a dramatic rainbow afro fan with balanced width
 a soft but huge halo puff with luxury density
@@ -1790,7 +1790,7 @@ a sculpted afro halo with symmetrical expansion
 a polished root-to-volume afro bloom
 a giant fantasy puff with cloudlike softness
 a dramatic giant afro spread with clean unified shape
-a beauty-poster afro crown with full silhouette
+a beauty-poster afro with full rounded silhouette
 a high-volume textured halo with rich body
 a glam afro sculpture with luxurious fullness
 a festival-ready oversized puff with clean framing
@@ -1803,7 +1803,7 @@ a sculptural afro shape with glamour symmetry
 a rounded afro halo design
 a lush halo puff with powerful visual scale
 a full-body afro silhouette with rich texture
-an iconic billboard-worthy afro crown with clean unified shape
+an iconic billboard-worthy afro with clean unified shape
 waist-length box braids with clean parts
 long knotless braids with luxury length
 two straight-back braids to the back
@@ -1814,7 +1814,7 @@ boho knotless braids with curly ends
 goddess braids with soft curled tendrils
 sleek braided ponytail with extra-long length
 high braided bun with polished hairline detail
-braided crown updo with elegant detail
+braided halo updo with elegant detail
 cornrows into a long braided ponytail
 cornrows into twin braids down the back
 lemonade braids sweeping to one side
@@ -3073,8 +3073,8 @@ surreal scale-distortion version
         renderFinish: "photoreal skin texture, pore detail, 8K realism, ultra-clean lens clarity",
         bonus: "magenta-heavy version"
       },
-      "Royal Pop Luxe": {
-        titleText: "Royal Pop Luxe",
+      "Pop Luxe Icon": {
+        titleText: "Pop Luxe Icon",
         subject: "a richly styled ad heroine",
         billboardStyle: "high-glam drip art with reflective sparkle finish",
         renderFinish: "hyper-realistic commercial finish with true-to-life skin, fabric, and reflective detail",
@@ -3087,10 +3087,10 @@ surreal scale-distortion version
         renderFinish: "cinematic photoreal finish with realistic shadows, facial detail, and luxury-grade sharpness",
         bonus: "public event version"
       },
-      "Urban Crown Muse": {
-        titleText: "Urban Crown Muse",
+      "Urban Halo Muse": {
+        titleText: "Urban Halo Muse",
         subject: "a commanding visual brand muse",
-        hairStyle: "a beauty-poster afro crown with full silhouette",
+        hairStyle: "a beauty-poster afro with full rounded silhouette",
         renderFinish: "photoreal skin texture, pore detail, 8K realism, ultra-clean lens clarity",
         bonus: "hero poster version"
       },
@@ -4028,7 +4028,7 @@ surreal scale-distortion version
           "an exaggerated halo afro with dramatic sculpted volume",
           "massive twin afro puffs with clean symmetrical shape",
           "a bold luxury afro bloom with rounded unified structure",
-          "oversized afro volume framing the face like a glowing crown",
+          "oversized afro volume framing the face like a glowing halo",
           "a statement afro silhouette with polished roots and giant fullness",
           "a dramatic rainbow afro fan with balanced width",
           "a soft but huge halo puff with luxury density",
@@ -4040,7 +4040,7 @@ surreal scale-distortion version
           "a polished root-to-volume afro bloom",
           "a giant fantasy puff with cloudlike softness",
           "a dramatic giant afro spread with clean unified shape",
-          "a beauty-poster afro crown with full silhouette",
+          "a beauty-poster afro with full rounded silhouette",
           "a high-volume textured halo with rich body",
           "a glam afro sculpture with luxurious fullness",
           "a festival-ready oversized puff with clean framing",
@@ -4053,7 +4053,7 @@ surreal scale-distortion version
           "a rounded afro halo design",
           "a lush halo puff with powerful visual scale",
           "a full-body afro silhouette with rich texture",
-          "an iconic billboard-worthy afro crown with clean unified shape",
+          "an iconic billboard-worthy afro with clean unified shape",
           "waist-length box braids with clean parts",
           "long knotless braids with luxury length",
           "two straight-back braids to the back",
@@ -4064,7 +4064,7 @@ surreal scale-distortion version
           "goddess braids with soft curled tendrils",
           "sleek braided ponytail with extra-long length",
           "high braided bun with polished hairline detail",
-          "braided crown updo with elegant detail",
+          "braided halo updo with elegant detail",
           "cornrows into a long braided ponytail",
           "cornrows into twin braids down the back",
           "lemonade braids sweeping to one side",
@@ -4495,7 +4495,7 @@ surreal scale-distortion version
           .replace(/\ba giant symmetrical afro halo with clean unified shape\b/gi, "low taper fade with sharp line-up")
           .replace(/\bmassive twin afro puffs with clean symmetrical shape\b/gi, "short afro fade with clean shape")
           .replace(/\brounded double-cloud afro design\b/gi, "high-top fade with clean edges")
-          .replace(/\ban iconic billboard-worthy afro crown with clean unified shape\b/gi, "short afro fade with clean shape");
+          .replace(/\ban iconic billboard-worthy afro with clean unified shape\b/gi, "short afro fade with clean shape");
 
         text += " hair must stay masculine only: choose from low taper fade, skin fade, 360 waves, buzz cut, short cropped curls, short afro fade, short loc fade, caesar cut, crew cut, temple fade, or neat masculine braids. no afro puffs, no ponytails, no long flowing hair, no feminine hair styling, no feminine beauty framing.";
         if(!/no heels/i.test(text)){
@@ -4880,11 +4880,29 @@ surreal scale-distortion version
     }
 
 
+    function cleanPrompt(t){
+      let s=String(t||""), prev;
+      const dangling=/\s*\b(?:posed in|built around|centers on|rendered as|captured with|capture it with|set in|wearing|featuring|creating|enhanced by|inside|with|in|and|of|as|a|an|the)\s*(?=[,.;]|$)/gi;
+      do{ prev=s;
+        s=s.replace(dangling,"")
+           .replace(/\bis\s*,\s*/g,"is ")
+           .replace(/,(\s*,)+/g,",")
+           .replace(/,\s*\./g,".")
+           .replace(/\.\s*,/g,".")
+           .replace(/\s+([,.;])/g,"$1")
+           .replace(/\.{2,}/g,".")
+           .replace(/\(\s*\)/g,"")
+           .replace(/[ \t]{2,}/g," ");
+      } while(s!==prev);
+      s=s.replace(/\b(featuring|Show)\s+([^,.]*?\bpresentation)\s+(an?|the)\s+([^,.]+?)(?=\s+with\b|[,.])/gi,"$1 $3 $4 with $2");
+      return s.trim();
+    }
+
     function generatePrompts(){
       applyBillboardTypeSelection();
       lockGenderedDropdowns();
-      document.getElementById("photoOutput").value = enforceBillboardOnlyPlacement(fixPlaneBannerPlacement(sanitizeGenderCrossovers(buildPhotoPrompt())));
-      document.getElementById("videoOutput").value = enforceBillboardOnlyPlacement(fixPlaneBannerPlacement(sanitizeGenderCrossovers(buildVideoPrompt())));
+      document.getElementById("photoOutput").value = cleanPrompt(enforceBillboardOnlyPlacement(fixPlaneBannerPlacement(sanitizeGenderCrossovers(buildPhotoPrompt()))));
+      document.getElementById("videoOutput").value = cleanPrompt(enforceBillboardOnlyPlacement(fixPlaneBannerPlacement(sanitizeGenderCrossovers(buildVideoPrompt()))));
       setStatus("Prompts generated.","success");
     }
 
