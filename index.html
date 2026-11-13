@@ -5656,11 +5656,12 @@ window.randomize = function(){
 
   function safeVal(id){
     const el = document.getElementById(id);
-    return el ? String(el.value || '').trim() : '';
+    const v = el ? String(el.value || '').trim() : '';
+    return /^none$/i.test(v) ? '' : v;
   }
 
   function firstChoice(id, fallback=''){
-    const source = Array.isArray(window.options?.[id]) ? window.options[id] : [];
+    const source = Array.isArray(window.options?.[id]) ? window.options[id] : [...(document.getElementById(id)?.options || [])].map(o => o.value);
     const current = safeVal(id);
     const mode = typeof window.getActiveMode === 'function' ? window.getActiveMode() : '';
     const isMulti = !!(document.getElementById(id) && document.getElementById(id).multiple);
@@ -5768,7 +5769,7 @@ window.randomize = function(){
         `Render in ${v.artStyle} with ${v.mood}.`
       ].join(' ');
     });
-    return vars.join('\n\n');
+    return vars.map(t => typeof cleanPrompt === 'function' ? cleanPrompt(t.replace(/\bNone\b/g, '')) : t).join('\n\n');
   }
 
   function generatePass2Outputs(){
